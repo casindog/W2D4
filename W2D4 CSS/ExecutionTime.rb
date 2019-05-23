@@ -60,7 +60,7 @@ end
 
 def lcs_better(arr)
   sum = 0
-  max_sum = 0
+  max_sum = arr.first
 
     arr.each do |el|
       sum += el
@@ -68,12 +68,22 @@ def lcs_better(arr)
         max_sum = sum
       end
 
-      if sum < 1
+      if sum < 0
         sum = 0
       end
 
+      if max_sum < 0 && el > max_sum
+        max_sum = el
+      end
     end
 
     max_sum
 
 end
+ a = [-5, -1, -3]
+ b = [2, 3, -6, 7, -6, 7]
+ c = [5, 3, -7]
+
+ p lcs_better(a)
+ p lcs_better(b)
+  p lcs_better(c)
